@@ -2,7 +2,7 @@
 
 namespace Hospital_Manager.ViewModels.Patient
 {
-    public class HospitalEditViewModel
+    public class PatientEditViewModel
     {
         public int Id { get; set; }
 

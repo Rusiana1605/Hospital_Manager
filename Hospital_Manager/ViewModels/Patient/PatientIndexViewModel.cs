@@ -1,6 +1,6 @@
 ﻿namespace Hospital_Manager.ViewModels.Patient
 {
-    public class HospitalIndexViewModel
+    public class PatientIndexViewModel
     {
         public int Id { get; set; }
 

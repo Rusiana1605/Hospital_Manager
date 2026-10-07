@@ -2,7 +2,7 @@
 
 namespace Hospital_Manager.ViewModels.Patient
 {
-    public class HospitalDetailsViewModel
+    public class PatientDetailsViewModel
     {
         public int Id { get; set; }
 
@@ -13,5 +13,7 @@ namespace Hospital_Manager.ViewModels.Patient
         public string Email { get; set; }
 
         public string PhoneNumber { get; set; }
+
+        public string DoctorName { get; set; }
     }
 }

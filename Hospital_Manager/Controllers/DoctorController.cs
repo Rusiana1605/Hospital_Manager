@@ -60,7 +60,7 @@ namespace Hospital_Manager.Controllers
                 Specialty = doctor.Specialty,
                 Email = doctor.Email,
                 PhoneNumber = doctor.PhoneNumber,
-                HospitalName = doctor.Hospital.Name
+                HospitalName = doctor.Hospital.Name,
                 Patients = doctor.DoctorPatients
                 .Select(dp => $"{dp.Patient.FirstName} {dp.Patient.LastName}").ToList()
             };

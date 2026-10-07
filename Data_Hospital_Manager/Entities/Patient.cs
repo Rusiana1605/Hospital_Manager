@@ -28,6 +28,6 @@ namespace Data_Hospital_Manager.Entities
         [Phone(ErrorMessage = "Моля, въведете валиден телефонен номер.")]
         public string PhoneNumber { get; set; }
 
-        public List<DoctorPatient> DoctorPatients { get; set; } = new List<DoctorPatient>();
+        public ICollection<DoctorPatient> DoctorPatients { get; set; } = new List<DoctorPatient>();
     }
 }

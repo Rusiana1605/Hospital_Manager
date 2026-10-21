@@ -1,53 +1,84 @@
-﻿@model Hospital_Manager.ViewModels.Patient.PatientDetailsViewModel
+﻿@model Hospital_Manager.ViewModels.Patient.PatientEditViewModel
 
 @{
-    ViewData["Title"] = "Patient Details";
+    ViewData["Title"] = "Edit Patient";
 }
 
-<h1>Patient Details</h1>
+<h1>Edit Patient</h1>
 
-<div>
-    <h4>Patient</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+<h4>Patient</h4>
+<hr />
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+<div class="row">
+    <div class="col-md-4">
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+        <form asp-action="Edit" method="post">
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
+            <input type="hidden" asp-for="Id" />
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.DoctorName)
-        </dt>
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.DoctorName)
-        </dd>
-    </dl>
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger">
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DoctorIds" class="control-label">
+                    Doctor
+                </label>
+
+                <select asp-for="DoctorIds"
+                        asp-items="ViewBag.Doctors"
+                        class="form-control">
+                </select>
+
+                <span asp-validation-for="DoctorIds"
+                      class="text-danger">
+                </span>
+            </div>
+
+
+            <br />
+
+            <div class="form-group">
+                <input type="submit"
+                       value="Save"
+                       class="btn btn-primary" />
+            </div>
+
+        </form>
+
+    </div>
 </div>
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> |
-    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -22,12 +22,12 @@ namespace Hospital_Manager.Core.Services
         public async Task<List<Hospital>> GetAllHospitalsAsync()
         {
             return await context.Hospitals
-                .Where(h => h.IsDeleted)
+                .Where(h => !h.IsDeleted)
                 .ToListAsync(); 
         }
         public async Task<Hospital?> GetHospitalByIdAsync(int id)
         {
-           return await context.Hospitals.FindAsync(id);
+            return await context.Hospitals.FindAsync(id);
         }
 
         public async Task AddHospitalAsync(Hospital hospital)

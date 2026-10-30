@@ -23,6 +23,7 @@ namespace Data_Hospital_Manager
         {
             modelBuilder.Entity<DoctorPatient>()
                 .HasKey(dp => new { dp.DoctorId, dp.PatientId });
+            modelBuilder.ApplyConfiguration(new Configuration.HospitalConfiguration());
             modelBuilder.Entity<DoctorPatient>()
                 .HasOne(dp => dp.Doctor)
                 .WithMany(d => d.DoctorPatients)

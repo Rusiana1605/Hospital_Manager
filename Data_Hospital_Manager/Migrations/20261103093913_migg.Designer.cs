@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Hospital_Manager.Migrations
 {
     [DbContext(typeof(HospitalDbContext))]
-    [Migration("20261002112502_MI")]
-    partial class MI
+    [Migration("20261103093913_migg")]
+    partial class migg
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,6 +64,28 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasIndex("HospitalId");
 
                     b.ToTable("Doctors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "john.T.Carter@hospital.com",
+                            FirstName = "John",
+                            HospitalId = 2,
+                            LastName = "Carter",
+                            PhoneNumber = "1234567892",
+                            Specialty = "Surgery"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "robbyrobinovitch@hospital.com",
+                            FirstName = "Michael",
+                            HospitalId = 1,
+                            LastName = "Robinovitch",
+                            PhoneNumber = "1234567893",
+                            Specialty = "ER"
+                        });
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.DoctorPatient", b =>
@@ -79,6 +101,18 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasIndex("PatientId");
 
                     b.ToTable("DoctorPatients");
+
+                    b.HasData(
+                        new
+                        {
+                            DoctorId = 1,
+                            PatientId = 1
+                        },
+                        new
+                        {
+                            DoctorId = 2,
+                            PatientId = 2
+                        });
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.Hospital", b =>
@@ -118,6 +152,30 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hospitals");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Pitt Strees 12",
+                            BedsCount = 100,
+                            CreatedOn = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "pittsburg@gmail.com",
+                            IsDeleted = false,
+                            Name = "The Ptt",
+                            PhoneNumber = "1234567890"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Dock Street 23",
+                            BedsCount = 200,
+                            CreatedOn = new DateTime(1994, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "ChicagoHospitals@gmail.com",
+                            IsDeleted = false,
+                            Name = "County Hospital",
+                            PhoneNumber = "1234567891"
+                        });
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.Patient", b =>
@@ -149,6 +207,24 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Patients");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "alicaT@gmail.com",
+                            FirstName = "Alice",
+                            LastName = "Truman",
+                            PhoneNumber = "1234568892"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "bobby@gmail.com",
+                            FirstName = "Bob",
+                            LastName = "Smith",
+                            PhoneNumber = "1224568892"
+                        });
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.Doctor", b =>

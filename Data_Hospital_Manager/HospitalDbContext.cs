@@ -39,6 +39,9 @@ namespace Data_Hospital_Manager
                 .WithOne(d => d.Hospital)
                 .HasForeignKey(d => d.HospitalId)
                 .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.ApplyConfiguration(new Configuration.PatientConfiguration());
+            modelBuilder.ApplyConfiguration(new Configuration.DoctorConfiguration());
+            modelBuilder.ApplyConfiguration(new Configuration.DoctorPatientConfiguration());
         }
     }
 }

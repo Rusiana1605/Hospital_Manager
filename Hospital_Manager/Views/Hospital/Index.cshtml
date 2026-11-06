@@ -18,6 +18,42 @@
     </a>
 </p>
 
+<form asp-controller="Hospital" asp-action ="Index" method="get">
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <label class="form-label">Hospital Name</label>
+            <input type="text"
+                name="search"
+                value="@ViewBag.Search"
+                class="form-control"
+                placeholder="Search by name..."/>
+        </div>       
+        <div class"col-md-3">
+            <label class="form-label">Minimum Beds</label>
+            <input type="number"
+                name="minBeds"
+                value="@ViewBag.MinBeds"
+                min="0"
+                class="form-control"/>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Sort By</label>
+        <select name="sortOrder" class=":form-control">
+            <option value="name"
+                    selected="@(ViewBag.SortedOrder == "name")">Name A-Z</option>"
+            <option value="beds_asc"
+                    selected="@(ViewBag.SortedOrder == "beds_asc")">Beds Count Ascending</option>
+            <option value="beds_desc"
+                    selected="@(ViewBag.SordedOrder == "beds_desc")"> Beds Count Descending</option>
+        </select>
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+    
+</form>
+
 <table class="table">
     <thead>
         <tr>

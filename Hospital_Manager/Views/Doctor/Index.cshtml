@@ -31,7 +31,7 @@
         <label class="form-label">Sort By</label>
         <select id="sortOrder" class=":form-control">
             <option value="name_asc">Name A-Z</option>"
-            <option value="name_desc">NAme Z-A</option>
+            <option value="name_desc">Name Z-A</option>
             <option value="specialty">Specialty A-Z</option>
         </select>
     </div>
@@ -95,3 +95,9 @@
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script src="~/js/DoctorFilter.js"
+            asp-append-version="true">
+    </script>
+}

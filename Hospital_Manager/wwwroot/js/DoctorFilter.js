@@ -1,5 +1,4 @@
-﻿JS
-async function loadDoctors() {
+﻿async function loadDoctors() {
 
     // 1. Вземаме стойностите от полетата
 

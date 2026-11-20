@@ -49,7 +49,7 @@ namespace Hospital_Manager.Controllers
                 Id = d.Id,
                 FirstName = d.FirstName,
                 LastName = d.LastName,
-                Specialty = specialty,
+                Specialty = d.Specialty,
                 hospitalname = d.Hospital.Name
             }).ToList();
 

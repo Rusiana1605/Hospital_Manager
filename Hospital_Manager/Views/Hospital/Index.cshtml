@@ -4,7 +4,12 @@
 }
 
 <h1>Hospitals</h1>
-
+@if(TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
 
 <p>
     <a asp-action="Create">Create New Hospital</a> |
@@ -28,7 +33,7 @@
                 class="form-control"
                 placeholder="Search by name..."/>
         </div>       
-        <div class"col-md-3">
+        <div class="col-md-3">
             <label class="form-label">Minimum Beds</label>
             <input type="number"
                 name="minBeds"
@@ -39,13 +44,13 @@
     </div>
     <div class="col-md-3">
         <label class="form-label">Sort By</label>
-        <select name="sortOrder" class=":form-control">
+        <select name="sortOrder" class="form-control">
             <option value="name"
                     selected="@(ViewBag.SortedOrder == "name")">Name A-Z</option>"
             <option value="beds_asc"
                     selected="@(ViewBag.SortedOrder == "beds_asc")">Beds Count Ascending</option>
             <option value="beds_desc"
-                    selected="@(ViewBag.SordedOrder == "beds_desc")"> Beds Count Descending</option>
+                    selected="@(ViewBag.SortedOrder == "beds_desc")"> Beds Count Descending</option>
         </select>
     </div>
     <div class="col-md-2 d-flex align-items-end">

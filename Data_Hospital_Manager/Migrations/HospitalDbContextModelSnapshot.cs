@@ -229,7 +229,7 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasOne("Data_Hospital_Manager.Entities.Hospital", "Hospital")
                         .WithMany("Doctors")
                         .HasForeignKey("HospitalId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Hospital");

@@ -43,7 +43,7 @@ namespace Hospital_Manager.Core.Services
                     query = query.OrderBy(h => h.BedsCount);
                     break;
                 case "beds_desc":
-                    query = query.OrderBy(h => h.BedsCount);
+                    query = query.OrderByDescending(h => h.BedsCount);
                     break;
                 default:
                     query = query.OrderBy(h => h.Name);
@@ -68,11 +68,20 @@ namespace Hospital_Manager.Core.Services
         public async Task DeleteHospitalAsync(int id)
         {
             var hospital = await context.Hospitals.FindAsync(id);
-            if (hospital != null)
+            if (hospital == null)
             {
-                hospital.IsDeleted = true;
-                await context.SaveChangesAsync();
+                return;
             }
+
+            bool hasDoctors = await context.Doctors.AnyAsync(d => d.HospitalId == id);
+
+            if(hasDoctors)
+            {
+               throw new InvalidOperationException("Cannot delete hospital with associated doctors.");
+            }
+
+            hospital.IsDeleted = true;
+            await context.SaveChangesAsync();
         }
     }
 }

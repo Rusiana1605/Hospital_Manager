@@ -33,11 +33,11 @@ namespace Hospital_Manager.Core.Services
                 .Include(x => x.Hospital);
             if (!string.IsNullOrEmpty(search))
             {
-                query = query.Where(x => x.FirstName.Contains(search) || x.FirstName.Contains(search));
+                query = query.Where(x => x.FirstName.Contains(search) || x.LastName.Contains(search));
             }
             if (!string.IsNullOrEmpty(specialty))
             {
-                query = query.Where(t => t.Specialty.Contains(search));
+                query = query.Where(t => t.Specialty.Contains(specialty));
             }
             switch (sortOrder)
             {
